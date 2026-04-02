@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 import streamlit as st
 import math
 
@@ -46,12 +45,6 @@ data = pd.read_csv("data/salary_data.csv")
 X = data["YearsExperience"]
 y = data["Salary"]
 
-plt.scatter(X,y)
-plt.xlabel("Experience in Years")
-plt.ylabel("Salary in USD")
-plt.title("Salary vs Experience")
-plt.show()
-
 w,b,_,_ = gradient_descent(X,y,0,0,0.01,1500)
 print("Slope: (w) ", w)
 print("Intercept: (b) ", b)
@@ -60,13 +53,6 @@ m = X.shape[0]
 y_hat = np.zeros(m)
 for i in range(m):
     y_hat[i] = np.dot(w,X[i])+b
-
-plt.scatter(X,y)
-plt.plot(X,y_hat, color='red')
-plt.xlabel("Experience in Years")
-plt.ylabel("Salary in USD")
-plt.title("Salary vs Experience")
-plt.show()
 
 st.title("Salary Predictor")
 years = st.slider("Years of Experience", 0, 20)
